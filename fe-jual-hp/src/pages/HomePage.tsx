@@ -108,7 +108,7 @@ export function HomePage() {
                             Jelajahi koleksi lengkap kami dan temukan penawaran terbaik untuk Anda
                         </p>
                         <Link to="/products">
-                            <Button variant="gradient" size="lg">
+                            <Button variant="gradient" size="lg" className="text-black">
                                 Mulai Belanja Sekarang
                             </Button>
                         </Link>
