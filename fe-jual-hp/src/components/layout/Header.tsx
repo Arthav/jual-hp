@@ -84,7 +84,7 @@ export function Header() {
                                 <Button variant="ghost" size="sm">Masuk</Button>
                             </Link>
                             <Link to="/register">
-                                <Button variant="gradient" size="sm">Daftar</Button>
+                                <Button variant="gradient" className='text-black' size="sm">Daftar</Button>
                             </Link>
                         </div>
                     )}
@@ -149,7 +149,7 @@ export function Header() {
                                         </Button>
                                     </Link>
                                     <Link to="/register" onClick={() => setIsMenuOpen(false)}>
-                                        <Button variant="gradient" className="w-full">
+                                        <Button variant="gradient" className="w-full text-black">
                                             Daftar
                                         </Button>
                                     </Link>
