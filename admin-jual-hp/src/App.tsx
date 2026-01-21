@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { Sidebar } from '@/components/layout/Sidebar';
 import { DashboardPage } from '@/pages/DashboardPage';
+import { ProductsPage } from '@/pages/ProductsPage';
+import { CategoriesPage } from '@/pages/CategoriesPage';
+import { OrdersPage } from '@/pages/OrdersPage';
 import { LoginPage } from '@/pages/LoginPage';
 
 function AdminLayout({ onLogout }: { onLogout: () => void }) {
@@ -25,9 +28,7 @@ function App() {
     setIsLoading(false);
   }, []);
 
-  const handleLogin = () => {
-    setIsAuthenticated(true);
-  };
+  const handleLogin = () => setIsAuthenticated(true);
 
   const handleLogout = () => {
     localStorage.removeItem('accessToken');
@@ -38,7 +39,7 @@ function App() {
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
       </div>
     );
   }
@@ -48,20 +49,15 @@ function App() {
       <Routes>
         <Route
           path="/login"
-          element={
-            isAuthenticated ? <Navigate to="/" /> : <LoginPage onLogin={handleLogin} />
-          }
+          element={isAuthenticated ? <Navigate to="/" /> : <LoginPage onLogin={handleLogin} />}
         />
         <Route
-          element={
-            isAuthenticated ? <AdminLayout onLogout={handleLogout} /> : <Navigate to="/login" />
-          }
+          element={isAuthenticated ? <AdminLayout onLogout={handleLogout} /> : <Navigate to="/login" />}
         >
           <Route path="/" element={<DashboardPage />} />
-          <Route path="/products" element={<DashboardPage />} />
-          <Route path="/categories" element={<DashboardPage />} />
-          <Route path="/orders" element={<DashboardPage />} />
-          <Route path="/users" element={<DashboardPage />} />
+          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/categories" element={<CategoriesPage />} />
+          <Route path="/orders" element={<OrdersPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

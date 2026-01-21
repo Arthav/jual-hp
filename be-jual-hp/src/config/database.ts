@@ -1,4 +1,4 @@
-import { Pool, PoolClient, QueryResult } from 'pg';
+import { Pool, PoolClient, QueryResult, QueryResultRow } from 'pg';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -15,7 +15,7 @@ pool.on('error', (err) => {
     process.exit(-1);
 });
 
-export const query = async <T = any>(
+export const query = async <T extends QueryResultRow = QueryResultRow>(
     text: string,
     params?: any[]
 ): Promise<QueryResult<T>> => {
