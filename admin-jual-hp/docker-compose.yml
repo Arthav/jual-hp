@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: jual-hp-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: jual_hp
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ../be-jual-hp/sql/migrations:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+    networks:
+      - jual-hp-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Backend API
+  backend:
+    build:
+      context: ../be-jual-hp
+      dockerfile: Dockerfile
+    container_name: jual-hp-backend
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DATABASE_URL: postgresql://postgres:password@postgres:5432/jual_hp
+      JWT_ACCESS_SECRET: your-super-secret-access-key-change-in-production
+      JWT_REFRESH_SECRET: your-super-secret-refresh-key-change-in-production
+      FRONTEND_URL: http://localhost:5173
+      ADMIN_URL: http://localhost:8080
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - jual-hp-network
+
+  # Admin Frontend
+  admin:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: jual-hp-admin
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    networks:
+      - jual-hp-network
+
+volumes:
+  postgres_data:
+
+networks:
+  jual-hp-network:
+    driver: bridge

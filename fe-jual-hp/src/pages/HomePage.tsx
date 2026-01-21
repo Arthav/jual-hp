@@ -1,0 +1,115 @@
+import { Link } from 'react-router-dom';
+import { ArrowRight, Smartphone, Shield, Truck, CreditCard } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+
+const features = [
+    {
+        icon: Smartphone,
+        title: 'Produk Original',
+        description: 'Semua smartphone dijamin 100% original dan bergaransi resmi',
+    },
+    {
+        icon: Shield,
+        title: 'Garansi Terjamin',
+        description: 'Garansi resmi hingga 1 tahun untuk semua produk',
+    },
+    {
+        icon: Truck,
+        title: 'Pengiriman Cepat',
+        description: 'Gratis ongkir ke seluruh Indonesia untuk pembelian tertentu',
+    },
+    {
+        icon: CreditCard,
+        title: 'Pembayaran Aman',
+        description: 'Berbagai metode pembayaran yang aman dan terpercaya',
+    },
+];
+
+export function HomePage() {
+    return (
+        <div className="flex flex-col">
+            {/* Hero Section */}
+            <section className="relative overflow-hidden" style={{ background: 'var(--gradient-hero)' }}>
+                <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+')] opacity-50" />
+
+                <div className="container relative py-20 lg:py-32">
+                    <div className="max-w-2xl mx-auto text-center space-y-6 animate-slide-up">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary">
+                            <span className="relative flex h-2 w-2">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                            </span>
+                            Promo Spesial Minggu Ini
+                        </div>
+
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                            Temukan <span className="gradient-text">Smartphone</span> Impian Anda
+                        </h1>
+
+                        <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+                            Koleksi smartphone terlengkap dari berbagai brand ternama dengan harga terbaik dan garansi resmi
+                        </p>
+
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                            <Link to="/products">
+                                <Button variant="gradient" size="xl" className="group">
+                                    Lihat Produk
+                                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                                </Button>
+                            </Link>
+                            <Link to="/products?category=promo">
+                                <Button variant="outline" size="xl">
+                                    Promo Hari Ini
+                                </Button>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Decorative Elements */}
+                <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl" />
+                <div className="absolute bottom-10 right-10 w-96 h-96 bg-accent/20 rounded-full blur-3xl" />
+            </section>
+
+            {/* Features */}
+            <section className="py-16 bg-background">
+                <div className="container">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {features.map((feature, index) => (
+                            <Card key={index} className="group animate-slide-up" style={{ animationDelay: `${index * 100}ms` }}>
+                                <CardContent className="p-6 text-center space-y-4">
+                                    <div className="mx-auto w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <feature.icon className="h-7 w-7 text-primary" />
+                                    </div>
+                                    <h3 className="font-semibold">{feature.title}</h3>
+                                    <p className="text-sm text-muted-foreground">{feature.description}</p>
+                                </CardContent>
+                            </Card>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* CTA Section */}
+            <section className="py-20 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10" />
+                <div className="container relative">
+                    <div className="max-w-3xl mx-auto text-center space-y-6">
+                        <h2 className="text-3xl md:text-4xl font-bold">
+                            Siap Menemukan Smartphone Terbaik?
+                        </h2>
+                        <p className="text-lg text-muted-foreground">
+                            Jelajahi koleksi lengkap kami dan temukan penawaran terbaik untuk Anda
+                        </p>
+                        <Link to="/products">
+                            <Button variant="gradient" size="lg">
+                                Mulai Belanja Sekarang
+                            </Button>
+                        </Link>
+                    </div>
+                </div>
+            </section>
+        </div>
+    );
+}
