@@ -35,31 +35,36 @@ export function HomePage() {
 
                 <div className="container relative py-20 lg:py-32">
                     <div className="max-w-2xl mx-auto text-center space-y-6 animate-slide-up">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm font-medium text-white backdrop-blur-sm">
                             <span className="relative flex h-2 w-2">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
                             </span>
                             Promo Spesial Minggu Ini
                         </div>
 
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                            Temukan <span className="gradient-text">Smartphone</span> Impian Anda
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
+                            Temukan <span className="text-accent relative inline-block">
+                                Smartphone
+                                <svg className="absolute w-full h-3 -bottom-1 left-0 text-accent opacity-50" viewBox="0 0 100 10" preserveAspectRatio="none">
+                                    <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="none" />
+                                </svg>
+                            </span> Impian Anda
                         </h1>
 
-                        <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+                        <p className="text-lg text-white/80 max-w-xl mx-auto">
                             Koleksi smartphone terlengkap dari berbagai brand ternama dengan harga terbaik dan garansi resmi
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                             <Link to="/products">
-                                <Button variant="gradient" size="xl" className="group">
+                                <Button size="xl" className="group bg-white text-primary hover:bg-white/90 border-0">
                                     Lihat Produk
                                     <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                                 </Button>
                             </Link>
                             <Link to="/products?category=promo">
-                                <Button variant="outline" size="xl">
+                                <Button variant="outline" size="xl" className="text-white border-white hover:bg-white/10 hover:text-white">
                                     Promo Hari Ini
                                 </Button>
                             </Link>
