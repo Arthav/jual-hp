@@ -130,5 +130,30 @@ export const adminUserService = {
     async deleteUser(id: string): Promise<void> {
         await api.delete(`/users/${id}`);
     },
+
+    async getDashboardStats(): Promise<DashboardStats> {
+        const response = await api.get<{ success: boolean; data: DashboardStats }>('/dashboard/stats');
+        return response.data.data;
+    }
 };
+
+export interface DashboardStats {
+    stats: {
+        totalProducts: number;
+        totalOrders: number;
+        totalUsers: number;
+        totalRevenue: number;
+    };
+    recentOrders: {
+        id: string;
+        customer: string;
+        product: string;
+        total: number;
+        status: string;
+    }[];
+    alerts: {
+        lowStock: number;
+        pendingOrders: number;
+    };
+}
 
