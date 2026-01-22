@@ -30,6 +30,7 @@ services:
     volumes:
       - ./be-jual-hp:/app
       - /app/node_modules
+      - uploads_data:/app/uploads
     command: npm run dev
     environment:
       NODE_ENV: development
@@ -91,6 +92,7 @@ services:
 
 volumes:
   postgres_data:
+  uploads_data:
 
 networks:
   jual-hp-network:
