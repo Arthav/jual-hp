@@ -112,3 +112,23 @@ export const adminOrderService = {
         throw new Error(response.data.error || 'Failed to update order');
     },
 };
+
+export interface User {
+    id: string;
+    email: string;
+    name: string;
+    role: 'user' | 'admin';
+    created_at: string;
+}
+
+export const adminUserService = {
+    async getUsers(page = 1, limit = 20): Promise<PaginatedResponse<User>> {
+        const response = await api.get<PaginatedResponse<User>>('/users', { params: { page, limit } });
+        return response.data;
+    },
+
+    async deleteUser(id: string): Promise<void> {
+        await api.delete(`/users/${id}`);
+    },
+};
+

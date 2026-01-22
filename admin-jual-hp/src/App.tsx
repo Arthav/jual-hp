@@ -6,6 +6,7 @@ import { ProductsPage } from '@/pages/ProductsPage';
 import { CategoriesPage } from '@/pages/CategoriesPage';
 import { OrdersPage } from '@/pages/OrdersPage';
 import { LoginPage } from '@/pages/LoginPage';
+import { UsersPage } from '@/pages/UsersPage';
 
 function AdminLayout({ onLogout }: { onLogout: () => void }) {
   return (
@@ -58,6 +59,7 @@ function App() {
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/categories" element={<CategoriesPage />} />
           <Route path="/orders" element={<OrdersPage />} />
+          <Route path="/users" element={<UsersPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
