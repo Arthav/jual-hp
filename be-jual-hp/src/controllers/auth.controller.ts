@@ -109,6 +109,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
             'SELECT * FROM users WHERE email = $1',
             [email]
         );
+        console.log(`Login attempt for: ${email}, Found: ${result.rows.length > 0}`);
 
         if (result.rows.length === 0) {
             res.status(401).json({
@@ -122,6 +123,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
 
         // Verify password
         const isValidPassword = await bcrypt.compare(password, user.password);
+        console.log(`Password check for ${email}: ${isValidPassword}`);
         if (!isValidPassword) {
             res.status(401).json({
                 success: false,

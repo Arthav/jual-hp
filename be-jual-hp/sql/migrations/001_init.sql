@@ -95,6 +95,6 @@ CREATE INDEX idx_cart_user ON cart_items(user_id);
 CREATE INDEX idx_refresh_tokens_user ON refresh_tokens(user_id);
 CREATE INDEX idx_refresh_tokens_token ON refresh_tokens(token);
 
--- Insert default admin user (password: admin123)
+-- Insert default admin user (password: bonacool)
 INSERT INTO users (email, password, name, role) VALUES 
-('admin@jualHP.com', '$2a$10$rQnM1lJk8Z5B3Xs3YWxKxe5kA8vH4jY0mNpLqRsTuVwXyZ1a2b3c4', 'Admin', 'admin');
+('admin@jualHP.com', '$2a$10$$10$ht7ix7i3eXtggaY5kbv9leDlYwcbTzMoPNvgDlFwU0eJI/nHZwkBi', 'Admin', 'admin');
