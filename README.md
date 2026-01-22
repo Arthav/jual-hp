@@ -27,7 +27,7 @@ docker-compose up -d --build
 
 ### Default Admin Account:
 - Email: `admin@jualHP.com`
-- Password: `admin123`
+- Password: `bonacool`
 
 ## Services
 
