@@ -22,6 +22,10 @@ export default defineConfig(() => {
           target: target,
           changeOrigin: true,
         },
+        '/uploads': {
+          target: target,
+          changeOrigin: true,
+        },
       },
     },
   }
