@@ -57,9 +57,9 @@ export function OrdersPage() {
                     value={filterStatus}
                     onChange={(e) => { setFilterStatus(e.target.value); setPage(1); }}
                 >
-                    <option value="">Semua Status</option>
+                    <option value="" className="bg-black text-white">Semua Status</option>
                     {statusOptions.map((opt) => (
-                        <option key={opt.value} value={opt.value}>{opt.label}</option>
+                        <option key={opt.value} value={opt.value} className="bg-black text-white">{opt.label}</option>
                     ))}
                 </select>
             </div>
@@ -119,7 +119,7 @@ export function OrdersPage() {
                                                     onChange={(e) => handleStatusChange(order.id, e.target.value as Order['status'])}
                                                 >
                                                     {statusOptions.map((opt) => (
-                                                        <option key={opt.value} value={opt.value}>{opt.label}</option>
+                                                        <option key={opt.value} value={opt.value} className="bg-black text-white">{opt.label}</option>
                                                     ))}
                                                 </select>
                                             </td>
