@@ -204,8 +204,20 @@ export function ProductsPage() {
                                 <div className="flex flex-wrap gap-3">
                                     {/* Existing images when editing */}
                                     {editingProduct?.images?.map((url, index) => (
-                                        <div key={`existing-${index}`} className="relative w-20 h-20 rounded-md overflow-hidden border border-border">
+                                        <div key={`existing-${index}`} className="relative w-20 h-20 rounded-md overflow-hidden border border-border group">
                                             <img src={url} alt={`Product ${index}`} className="w-full h-full object-cover" />
+                                            <button
+                                                type="button"
+                                                onClick={() => {
+                                                    if (!editingProduct) return;
+                                                    const newImages = [...editingProduct.images];
+                                                    newImages.splice(index, 1);
+                                                    setEditingProduct({ ...editingProduct, images: newImages });
+                                                }}
+                                                className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity"
+                                            >
+                                                <XIcon className="h-5 w-5 text-white" />
+                                            </button>
                                         </div>
                                     ))}
 
